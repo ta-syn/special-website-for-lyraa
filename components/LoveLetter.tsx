@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { GoogleGenAI } from "@google/genai";
 import confetti from 'canvas-confetti';
 
 const LoveLetter: React.FC = () => {
@@ -20,21 +19,24 @@ const LoveLetter: React.FC = () => {
     }
   };
 
-  const generateAIPromise = async () => {
+  const generateAIPromise = () => {
     setIsGenerating(true);
-    try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: "Write a short, deeply soulful 1-sentence promise from Yuki to Lyraa for Promise Day. Poetic and romantic.",
-        config: { temperature: 0.8 },
-      });
-      setGeneratedPromise(response.text || "I promise that every mile between us is just a reason to love you more.");
-    } catch (e) {
-      setGeneratedPromise("I promise to hold you until the stars forget how to shine.");
-    } finally {
+    
+    // Static romantic promises instead of AI-generated
+    const promises = [
+      "I promise that every mile between us is just a reason to love you more.",
+      "I promise to hold you until the stars forget how to shine.",
+      "I promise to build a future where distance is just a memory.",
+      "I promise that my love for you will outlast every sunset we're apart.",
+      "I promise to cherish every moment with you like it's our first and last."
+    ];
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      const randomPromise = promises[Math.floor(Math.random() * promises.length)];
+      setGeneratedPromise(randomPromise);
       setIsGenerating(false);
-    }
+    }, 1500);
   };
 
   return (

@@ -56,6 +56,23 @@ const MusicToggle: React.FC = () => {
     }
   };
 
+  const handleSongEnd = () => {
+    // When song ends, move to next song and play automatically
+    if (sourceIndex < audioSources.length - 1) {
+      setSourceIndex(prev => prev + 1);
+      setIsPlaying(true);
+      // Small delay to ensure audio element updates
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.play().catch(console.error);
+        }
+      }, 100);
+    } else {
+      // If it's the last song, just stop
+      setIsPlaying(false);
+    }
+  };
+
   const handleAudioError = () => {
     setIsPlaying(false);
     setIsLoading(false);
@@ -178,10 +195,10 @@ const MusicToggle: React.FC = () => {
 
       <audio 
         ref={audioRef} 
-        loop 
         preload="auto"
         src={audioSources[sourceIndex]} 
         onError={handleAudioError}
+        onEnded={handleSongEnd}
       />
 
       <style>{`
