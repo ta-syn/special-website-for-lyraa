@@ -1,0 +1,8 @@
+{
+  "name": "yuki-lyraa-2030",
+  "description": "A high-end professional digital promise celebrating the connection between Dhaka and Indonesia, targeting May 30, 2030.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

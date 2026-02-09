@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yuki & Lyraa | The 2030 Opus</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "maroon-primary": "#800020",
+              "maroon-dark": "#660019",
+              "maroon-light": "#99334C",
+              "cream-primary": "#FFF6E5",
+              "cream-dark": "#F5E6D3",
+              "gold-accent": "#D4AF37",
+              "gold-light": "#E5C158",
+            },
+            fontFamily: {
+              playfair: ["Playfair Display", "serif"],
+              poppins: ["Poppins", "sans-serif"],
+            },
+            animation: {
+              reveal: "reveal 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards",
+              "slide-right": "slideRight 4s infinite linear",
+            },
+            keyframes: {
+              reveal: {
+                "0%": { transform: "translateY(80px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              slideRight: {
+                "0%": { transform: "translateX(-100%)" },
+                "100%": { transform: "translateX(100%)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #fdfcf8;
+        color: #1a1a1a;
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* Custom Luxury Cursor - Hide on Touch */
+      @media (hover: hover) and (pointer: fine) {
+        body {
+          cursor: none;
+        }
+        #custom-cursor {
+          position: fixed;
+          width: 12px;
+          height: 12px;
+          background: #c19a9b;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 10000;
+          transition:
+            transform 0.1s ease-out,
+            background 0.3s ease;
+          mix-blend-mode: difference;
+        }
+        .cursor-hover #custom-cursor {
+          transform: scale(6);
+          background: rgba(193, 154, 155, 0.2);
+          border: 0.2px solid #c19a9b;
+        }
+      }
+
+      @media (hover: none) {
+        #custom-cursor {
+          display: none;
+        }
+      }
+
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+      }
+
+      /* Prevent content being cut off on mobile */
+      .section-padding {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+      @media (min-width: 768px) {
+        .section-padding {
+          padding-top: 10rem;
+          padding-bottom: 10rem;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fdfcf8;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c19a9b;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@^19.2.4",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+          "react/": "https://esm.sh/react@^19.2.4/",
+          "canvas-confetti": "https://esm.sh/canvas-confetti@^1.9.4",
+          "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body>
+    <div id="custom-cursor"></div>
+    <div class="noise-overlay"></div>
+    <div id="root"></div>
+    <script>
+      const cursor = document.getElementById("custom-cursor");
+      if (cursor) {
+        document.addEventListener("mousemove", (e) => {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+        });
+        document.addEventListener("mouseover", (e) => {
+          const target = e.target;
+          if (
+            target.tagName === "BUTTON" ||
+            target.tagName === "A" ||
+            target.closest("button") ||
+            target.closest("a")
+          ) {
+            document.body.classList.add("cursor-hover");
+          } else {
+            document.body.classList.remove("cursor-hover");
+          }
+        });
+      }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
