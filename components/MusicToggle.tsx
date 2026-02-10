@@ -11,8 +11,8 @@ const MusicToggle: React.FC = () => {
 
   // Local audio sources
   const audioSources = [
-    "/song/Die With A Smile-(SambalpuriStar.In).mp3",
-    "/song/Stephen_Sanchez_-_Until_I_Found_You.mp3"
+    "song/Die With A Smile-(SambalpuriStar.In).mp3",
+    "song/Stephen_Sanchez_-_Until_I_Found_You.mp3"
   ];
   const [sourceIndex, setSourceIndex] = useState(0);
 

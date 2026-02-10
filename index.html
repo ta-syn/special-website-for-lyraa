@@ -5,48 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yuki & Lyraa | The 2030 Opus</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "maroon-primary": "#800020",
-              "maroon-dark": "#660019",
-              "maroon-light": "#99334C",
-              "cream-primary": "#FFF6E5",
-              "cream-dark": "#F5E6D3",
-              "gold-accent": "#D4AF37",
-              "gold-light": "#E5C158",
-            },
-            fontFamily: {
-              playfair: ["Playfair Display", "serif"],
-              poppins: ["Poppins", "sans-serif"],
-            },
-            animation: {
-              reveal: "reveal 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards",
-              "slide-right": "slideRight 4s infinite linear",
-            },
-            keyframes: {
-              reveal: {
-                "0%": { transform: "translateY(80px)", opacity: "0" },
-                "100%": { transform: "translateY(0)", opacity: "1" },
-              },
-              slideRight: {
-                "0%": { transform: "translateX(-100%)" },
-                "100%": { transform: "translateX(100%)" },
-              },
-            },
-          },
-        },
-      };
-    </script>
     <style>
       :root {
         scroll-behavior: smooth;
