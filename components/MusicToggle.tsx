@@ -5,6 +5,7 @@ const MusicToggle: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [showNowPlaying, setShowNowPlaying] = useState(false);
+  const [showVolumeControls, setShowVolumeControls] = useState(false);
   const [hasError, setHasError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -37,7 +38,11 @@ const MusicToggle: React.FC = () => {
           setIsPlaying(true);
           setIsLoading(false);
           setShowNowPlaying(true);
-          setTimeout(() => setShowNowPlaying(false), 8000);
+          setShowVolumeControls(true);
+          setTimeout(() => {
+            setShowNowPlaying(false);
+            setShowVolumeControls(false);
+          }, 3000); // Hide after 3 seconds
         }
       } catch (e) {
         console.error("Playback failed, trying next source:", e);
@@ -101,7 +106,7 @@ const MusicToggle: React.FC = () => {
     <div className="fixed bottom-10 right-10 z-[5000] flex flex-col items-end gap-5 group">
       
       {/* "Now Playing" Notification Card */}
-      <div className={`mb-4 transition-all duration-1000 transform ${showNowPlaying || (isPlaying && !showNowPlaying) || hasError ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'}`}>
+      <div className={`mb-4 transition-all duration-1000 transform ${showNowPlaying || hasError ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'}`}>
         <div className="bg-white/80 backdrop-blur-3xl border border-white/50 px-6 py-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.05)] flex items-center gap-5">
            <div className={`w-12 h-12 rounded-xl overflow-hidden relative flex items-center justify-center text-xl ${hasError ? 'bg-red-50' : 'bg-luxury-onyx'}`}>
               <div className={`absolute inset-0 bg-luxury-rose/20 ${isPlaying ? 'animate-pulse' : ''}`}></div>
@@ -139,7 +144,7 @@ const MusicToggle: React.FC = () => {
 
       <div className="flex items-center gap-5">
         {/* Volume Controls */}
-        <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 bg-white/60 backdrop-blur-xl border border-white/40 px-6 py-4 rounded-full shadow-xl flex items-center gap-4 translate-x-4 pointer-events-none group-hover:pointer-events-auto group-hover:translate-x-0">
+        <div className={`transition-all duration-500 bg-white/60 backdrop-blur-xl border border-white/40 px-6 py-4 rounded-full shadow-xl flex items-center gap-4 ${showVolumeControls ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 translate-x-4 pointer-events-none'}`}>
           <span className="text-[9px] font-bold text-maroon-primary uppercase tracking-tighter w-6">VOL</span>
           <div className="relative w-24 h-1 bg-gray-100 rounded-full overflow-hidden">
             <div 
