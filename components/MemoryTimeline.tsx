@@ -3,7 +3,7 @@ import React from 'react';
 
 const MemoryTimeline: React.FC = () => {
   const history = [
-    { year: '2025', event: 'The Digital Genesis', loc: 'Land of Dawn', desc: 'Our first encounter in MLBB. A random match, a simple chat, and the start of everything.' },
+    { year: '2025', event: 'The Digital Genesis', loc: 'Land of Dawn', desc: 'Our first encounter in MLBB global chat. I followed you, you sent the first text, and destiny began writing our story.' },
     { year: '2026', event: 'The Bridge of Echoes', loc: 'Dhaka - Jakarta', desc: 'Transforming voices into reality. Navigating the initial miles through laughter and late-night calls.' },
     { year: '2028', event: 'The Golden Resolve', loc: 'Fortifying Dreams', desc: 'Building the professional and emotional foundations required to bridge the gap between two worlds.' },
     { year: '2030', event: 'The Realization', loc: 'Jakarta Arrival', desc: 'The moment the pixels turn into skin and bone. The end of the wait, the start of forever.' }
