@@ -9,10 +9,10 @@ const MusicToggle: React.FC = () => {
   const [hasError, setHasError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Local audio sources
+  // Local audio sources - use paths from public directory
   const audioSources = [
-    "song/Die With A Smile-(SambalpuriStar.In).mp3",
-    "song/Stephen_Sanchez_-_Until_I_Found_You.mp3"
+    "/Die With A Smile-(SambalpuriStar.In).mp3",
+    "/Stephen_Sanchez_-_Until_I_Found_You.mp3"
   ];
   const [sourceIndex, setSourceIndex] = useState(0);
 
